@@ -1,13 +1,14 @@
-import Component from "../interfaces/Component";
-import Item from "../model/Item";
-import MenuService from "../services/MenuService";
+import Component from '../interfaces/Component'
+import Item from '../model/Item'
+import MenuService from '../services/MenuService'
+import MenuItem from './MenuItem'
 
 class MenuList implements Component {
-  menuService = MenuService;
-  constructor(private element: HTMLElement) {}
+    menuService = MenuService
+    constructor(private element: HTMLElement) {}
 
-  createMenuItem(index: number, item: Item): string {
-    return `
+    createMenuItem(index: number, item: Item): string {
+        return `
         <div class="col-sm-12  col-lg-6 col-xxl-4">
             <div class="food-item p-3">
                 <div class="food-item__info row">
@@ -36,69 +37,28 @@ class MenuList implements Component {
                 </div>
             </div>
         </div>
-    `;
-  }
-
-  increaseQuantity(el: HTMLElement) {
-    const value = Number(el.innerText);
-    el.innerText = String(value + 1);
-  }
-  decreaseQuantity(el: HTMLElement) {
-    const value = Number(el.innerText);
-    if(value>1)
-        el.innerText = String(value - 1);
-  }
-
-  render(): void {
-    const html = MenuService.list.reduce<string>(
-      (current, item, index) => current + this.createMenuItem(index, item),
-      ""
-    );
-    this.element.innerHTML = html;
-
-    const addCartBtnList = document.querySelectorAll(
-      ".food-item__controls__add-cart > button"
-    );
-
-    for (let i = 0; i < addCartBtnList.length; i++) {
-      const btn = addCartBtnList[i] as HTMLButtonElement;
-      const index = Number(btn.dataset.index);
-      btn.onclick = () => {
-        btn.classList.remove('mybtn-secondary')
-        btn.classList.add('mybtn-primary')
-        console.log("Add index =", index);
-        console.log("Item:", this.menuService.list[index]);
-        console.log("Quantity:", (document.querySelector(`.controls__quantity > span[data-index='${index}']`) as HTMLSpanElement).innerText);
-        
-      };
+    `
     }
 
-    //Change quantity
-    const changeQuantityBtnList = document.querySelectorAll(
-      ".controls__quantity > button"
-    );
+   
 
-    for (let i = 0; i < changeQuantityBtnList.length; i++) {
-      const btn = changeQuantityBtnList[i] as HTMLElement;
-      const type = btn.dataset.type;
+    render(): void {
+        // const html = MenuService.list.reduce<string>(
+        //     (current, item, index) => current + this.createMenuItem(index, item),
+        //     ''
+        // )
 
-      btn.onclick = () => {
-        switch (type) {
-          case "DEC":
-            this.decreaseQuantity(btn.nextElementSibling as HTMLElement)
-            break;
-          case "INC":
-            this.increaseQuantity(btn.previousElementSibling as HTMLElement)
-            break;
-
-          default:
-            break;
+        for (let i = 0; i < MenuService.list.length; i++) {
+            const item = MenuService.list[i]
+            const itemContainner = document.createElement('div')
+            itemContainner.classList.add(`list-item-${i}`)
+            this.element.appendChild(itemContainner)
+            new MenuItem(document.querySelector(`.list-item-${i}`) as HTMLElement, {
+                item,
+                index: i,
+            }).render()
         }
-      };
     }
-
-    console.log("Button", addCartBtnList);
-  }
 }
 
-export default MenuList;
+export default MenuList

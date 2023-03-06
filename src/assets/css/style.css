@@ -160,6 +160,9 @@
 
 
 .food-item__controls__add-cart {}
+.remove-cart{
+    cursor: pointer;
+}
 
 
 /* Bill */
