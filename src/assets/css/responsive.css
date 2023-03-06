@@ -1,0 +1,23 @@
+/* Responsive */
+
+@media (min-width: 576px) { 
+    .sidebar {
+        display: block;
+        
+    }
+    .main-content {
+        margin-left: 100px;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .sidebar{
+        width: 300px;
+    }
+    .main-content {
+        margin-left: 300px;
+        background-color: var(--bg-color);
+        min-height: 100vh;
+    }
+ }

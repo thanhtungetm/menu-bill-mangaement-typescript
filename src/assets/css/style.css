@@ -1,0 +1,202 @@
+@import url(./common.css);
+/* ================Side Bar==================== */
+.sidebar {
+    background-color: var(--light-color);
+    width: 100px;
+    height: 100vh;
+
+    position: fixed;
+    display: none;
+}
+
+.sidebar__nav {
+    font-size: var(--font-size);
+    font-weight: 500;
+}
+
+.sidebar__nav>li {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar__nav li span{
+    display: none;
+}
+
+.sidebar__nav>li:hover {
+    color: var(--second-text-color);
+}
+
+.sidebar__nav .active {
+    position: relative;
+    color: var(--second-text-color);
+}
+
+.sidebar__nav .active::after {
+    content: "";
+    position: absolute;
+
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: var(--main-color);
+    width: 8px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: var(--second-text-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================Main Content==================== */
+.main-content {
+
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+
+
+/* ================Header==================== */
+.main-content .main-content__header {
+    background-color: var(--light-color);
+    height: var(--header-height);
+
+    display: flex;
+    align-items: center;
+}
+
+.main-content__header__search-input {
+    margin-left: 30px;
+    background-color: var(--bg-color);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.main-content__header__search-input>input {
+    background-color: var(--bg-color);
+    font-size: var(--font-size);
+
+}
+
+/* ================Filter==================== */
+.main-content__filters>button {
+    margin: 0 10px;
+}
+
+/* ================List Menu==================== */
+
+.main-content__list__title {
+    font-size: var(--lg-font-size);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.main-content__list,
+.main-content__list__menu {}
+
+.food-item {
+    background: var(--light-color);
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.food-item__info {
+    display: flex;
+    flex-grow: 1;
+    padding: 5px 0px;
+}
+
+.food-item__info__image {
+}
+
+.food-item__info__image>img {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.food-item__info__desc {
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-item__info__desc>.food-name {
+    font-size: var(--lg-font-size);
+}
+
+.food-item__info__desc>.food-desc {
+    font-weight: 400;
+    flex-grow: 1;
+}
+
+.food-item__info__desc>.food-price {
+    font-size: var(--lg-font-size);
+    color: var(--main-color);
+}
+
+.food-item__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+
+.food-item__controls__add-cart {}
+
+
+/* Bill */
+.bill{}
+
+.bill__title{
+    display: flex;
+    justify-content: space-between;
+}
+.bill_item{
+    display: flex;
+    padding: 10px 0;
+}
+.bill_item__image{
+    width: 45%;
+}
+.bill_item__info{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.bill_item__info > h6{
+    color: var(--main-color);
+}
+.bill_item__info__quantity{
+    /* align-self: center; */
+    flex-grow: 1;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+}
+.bill__total{
+    color: var(--main-color);
+    font-weight: 500;
+}
+
+
+
+
